@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio – Yaren Fabre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ── Variables ── */
+    :root {
+      --bg:        #080c12;
+      --bg2:       #0e1420;
+      --bg3:       #141c2e;
+      --border:    rgba(255,255,255,0.07);
+      --accent:    #00d8ff;
+      --accent2:   #7c5cfc;
+      --text:      #e2e8f0;
+      --text-dim:  #7a8ba0;
+      --card:      rgba(20, 28, 46, 0.85);
+      --radius:    14px;
+      --glow:      0 0 28px rgba(0,216,255,0.18);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Figtree', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Background grid ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,216,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,216,255,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(8,12,18,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 62px;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
+    .nav-links a {
+      display: block;
+      padding: 0.35rem 0.85rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; cursor: pointer; color: var(--text); font-size: 1.3rem; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      max-width: 760px;
+    }
+    .hero-avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      box-shadow: var(--glow);
+      object-fit: cover;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--text-dim);
+      overflow: hidden;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,216,255,0.08);
+      border: 1px solid rgba(0,216,255,0.25);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      background: linear-gradient(135deg, #fff 40%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      color: var(--text-dim);
+      font-size: 1.1rem;
+      max-width: 520px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #06090f;
+    }
+    .btn-primary:hover { filter: brightness(1.15); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--text-dim), transparent);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0%,100%{opacity:0.3}50%{opacity:1} }
+
+    /* ── Sections ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 2rem;
+    }
+    .container { max-width: 1040px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      color: var(--text-dim);
+      max-width: 560px;
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+    .divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      backdrop-filter: blur(8px);
+    }
+    .card:hover {
+      border-color: rgba(0,216,255,0.3);
+      box-shadow: var(--glow);
+    }
+    .card-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .icon-cyan  { background: rgba(0,216,255,0.12); color: var(--accent); }
+    .icon-purple{ background: rgba(124,92,252,0.12); color: var(--accent2); }
+    .icon-green { background: rgba(0,230,118,0.12);  color: #00e676; }
+    .icon-orange{ background: rgba(255,152,0,0.12);  color: #ff9800; }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .about-main {
+      grid-column: 1 / -1;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .info-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin: 0.25rem;
+    }
+    .info-pill i { color: var(--accent); font-size: 0.8rem; }
+    .pills-row { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 1.5rem; }
+
+    /* ── BTS Section ── */
+    .bts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+      border-radius: 2px;
+    }
+    .tl-item {
+      position: relative;
+      padding: 0 0 2.2rem 1.5rem;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -2rem;
+      top: 4px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,216,255,0.18);
+      transform: translateX(-4px);
+    }
+    .tl-year {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+    .tl-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+    .tl-sub {
+      color: var(--text-dim);
+      font-size: 0.88rem;
+    }
+
+    /* ── Entreprise ── */
+    .entreprise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    /* ── Certifications ── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    .cert-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .cert-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #fff; }
+    .cert-card p  { font-size: 0.88rem; color: var(--text-dim); }
+
+    /* ── Projets placeholder ── */
+    .projets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.4rem;
+    }
+    .projet-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      min-height: 180px;
+    }
+    .projet-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; color: #fff; }
+    .projet-card p  { color: var(--text-dim); font-size: 0.9rem; flex: 1; }
+    .tag {
+      display: inline-block;
+      background: rgba(0,216,255,0.1);
+      border: 1px solid rgba(0,216,255,0.2);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .tag-purple {
+      background: rgba(124,92,252,0.1);
+      border-color: rgba(124,92,252,0.2);
+      color: var(--accent2);
+    }
+    .placeholder-note {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(255,152,0,0.07);
+      border: 1px solid rgba(255,152,0,0.2);
+      border-radius: 10px;
+      padding: 0.9rem 1.2rem;
+      color: #ff9800;
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Veille ── */
+    .veille-placeholder {
+      text-align: center;
+      padding: 4rem 2rem;
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      color: var(--text-dim);
+    }
+    .veille-placeholder i { font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent); opacity: 0.5; }
+
+    /* ── Tableau synthèse ── */
+    .synthese-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 2.5rem;
+    }
+    .synthese-card .left h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .synthese-card .left p { color: var(--text-dim); font-size: 0.92rem; max-width: 400px; }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      text-decoration: none;
+    }
+    .contact-icon {
+      width: 50px; height: 50px;
+      border-radius: 12px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .contact-item:hover .contact-icon {
+      border-color: var(--accent);
+      box-shadow: var(--glow);
+    }
+    .contact-item .label { font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
+    .contact-item .value { font-weight: 600; color: var(--text); font-size: 0.95rem; }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.83rem;
+    }
+
+    /* ── Fade-in animation ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 62px; left: 0; right: 0; background: rgba(8,12,18,0.97); padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: block; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .entreprise-grid { grid-template-columns: 1fr; }
+      .synthese-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <a href="#hero" class="nav-logo">YF</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#bts">BTS SIO</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#entreprise">Entreprise</a></li>
+    <li><a href="#certifications">Certifs</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#veille">Veille</a></li>
+    <li><a href="#synthese">Synthèse</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-avatar">
+      <!-- Remplace cette div par : <img src="images/profil.jpg" alt="Yaren Fabre" style="width:100%;height:100%;object-fit:cover;border-radius:50%"> -->
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="hero-badge">BTS SIO SISR – 1ère année</div>
+    <h1 class="hero-name">Yaren Fabre</h1>
+    <p class="hero-sub">Étudiant en alternance passionné par les infrastructures systèmes et réseaux, en formation à H3 Hitema.</p>
+    <div class="hero-actions">
+      <a href="#projets" class="btn btn-primary"><i class="fas fa-folder-open"></i> Mes projets</a>
+      <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Me contacter</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── À propos ── -->
+<section id="about">
+  <div class="container fade-up">
+    <div class="section-label">01 — Présentation</div>
+    <h2 class="section-title">À propos de moi</h2>
+    <div class="divider"></div>
+    <div class="card">
+      <p class="about-main">
+        Je m'appelle <strong style="color:#fff">Yaren Fabre</strong>, j'ai <strong style="color:#fff">19 ans</strong> et je suis actuellement étudiant en <strong style="color:#fff">1ère année de BTS SIO option SISR</strong> (Solutions d'Infrastructure, Systèmes et Réseaux) à H3 Hitema, en alternance chez Square Management. Passionné par l'informatique et les nouvelles technologies, j'ai naturellement orienté mon parcours vers le domaine des réseaux et de l'infrastructure.
+      </p>
+      <div class="pills-row">
+        <span class="info-pill"><i class="fas fa-map-marker-alt"></i> Paris, France</span>
+        <span class="info-pill"><i class="fas fa-calendar"></i> 19 ans</span>
+        <span class="info-pill"><i class="fas fa-graduation-cap"></i> BTS SIO SISR</span>
+        <span class="info-pill"><i class="fas fa-building"></i> Alternance – Square Management</span>
+        <!-- Décommente si tu as ton LinkedIn :
+        <a href="https://www.linkedin.com/in/yaren-fabre" target="_blank" class="info-pill" style="text-decoration:none;color:var(--text-dim)">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BTS SIO SISR ── -->
+<section id="bts" style="background: var(--bg2);">
+  <div class="container fade-up">
+    <div class="section-label">02 — Formation</div>
+    <h2 class="section-title">BTS SIO – Option SISR</h2>
+    <div class="divider"></div>
+    <p class="section-desc">Le BTS Services Informatiques aux Organisations prépare aux métiers de l'informatique en entreprise, avec deux spécialités distinctes.</p>
+    <div class="bts-grid">
+      <div class="card">
+        <div class="card-icon icon-cyan"><i class="fas fa-network-wired"></i></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Option SISR</h3>
+        <p style="color:var(--text-dim);font-size:.9rem">Solutions d'Infrastructure, Systèmes et Réseaux. Spécialité centrée sur l'administration des réseaux, la sécurisation des infrastructures et la gestion des systèmes.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-purple"><i class="fas fa-server"></i></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Administration Systèmes</h3>
+        <p style="color:var(--text-dim);font-size:.9rem">Installation, configuration et maintenance de serveurs (Windows Server, Linux), gestion des utilisateurs et des droits d'accès.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-green"><i class="fas fa-shield-alt"></i></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Cybersécurité</h3>
+        <p style="color:var(--text-dim);font-size:.9rem">Sécurisation des réseaux, gestion des pare-feux, analyse des vulnérabilités et sensibilisation aux bonnes pratiques de sécurité.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-orange"><i class="fas fa-tools"></i></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Support & Maintenance</h3>
+        <p style="color:var(--text-dim);font-size:.9rem">Gestion du parc informatique, support technique aux utilisateurs, déploiement et suivi des équipements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Parcours ── -->
+<section id="parcours">
+  <div class="container fade-up">
+    <div class="section-label">03 — Historique</div>
+    <h2 class="section-title">Mon Parcours</h2>
+    <div class="divider"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem"><i class="fas fa-graduation-cap" style="color:var(--accent)"></i> Cursus Scolaire</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2025 – 2027</div>
+            <div class="tl-title">BTS SIO option SISR</div>
+            <div class="tl-sub">H3 Hitema – Paris</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--accent2);box-shadow:0 0 0 3px rgba(124,92,252,0.18)"></div>
+            <div class="tl-year" style="color:var(--accent2)">2023 – 2025</div>
+            <div class="tl-title">Baccalauréat Général – spécialité NSI</div>
+            <div class="tl-sub">Lycée Gaston Bachelard, Chelles</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--accent2);box-shadow:0 0 0 3px rgba(124,92,252,0.18)"></div>
+            <div class="tl-year" style="color:var(--accent2)">2022 – 2023</div>
+            <div class="tl-title">Première Générale – spécialité NSI</div>
+            <div class="tl-sub">Lycée Gaston Bachelard, Chelles</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--accent2);box-shadow:0 0 0 3px rgba(124,92,252,0.18)"></div>
+            <div class="tl-year" style="color:var(--accent2)">2021 – 2022</div>
+            <div class="tl-title">Seconde Générale</div>
+            <div class="tl-sub">Lycée Gaston Bachelard, Chelles</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:#7a8ba0;box-shadow:none"></div>
+            <div class="tl-year" style="color:var(--text-dim)">2019 – 2020</div>
+            <div class="tl-title">Brevet des Collèges</div>
+            <div class="tl-sub">Collège René Goscinny, Vaires-sur-Marne</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem"><i class="fas fa-briefcase" style="color:var(--accent)"></i> Projet Professionnel</h3>
+        <div class="card" style="margin-bottom:1.2rem">
+          <div class="card-icon icon-cyan"><i class="fas fa-rocket"></i></div>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Objectif</h3>
+          <p style="color:var(--text-dim);font-size:.9rem">Approfondir mes compétences en administration systèmes et réseaux, évoluer vers un poste de technicien réseau ou administrateur infrastructure, et poursuivre ma formation après le BTS.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-purple"><i class="fas fa-laptop-code"></i></div>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Compétences techniques</h3>
+          <p style="color:var(--text-dim);font-size:.9rem;margin-bottom:.8rem">Technologies et outils étudiés en formation et en entreprise.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem">
+            <span class="tag">Linux</span>
+            <span class="tag">Cisco</span>
+            <span class="tag">Packet Tracer</span>
+            <span class="tag">GLPI</span>
+            <span class="tag tag-purple">TCP/IP</span>
+            <span class="tag tag-purple">VLAN</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Entreprise ── -->
+<section id="entreprise" style="background: var(--bg2);">
+  <div class="container fade-up">
+    <div class="section-label">04 — Alternance</div>
+    <h2 class="section-title">Square Management</h2>
+    <div class="divider"></div>
+    <p class="section-desc">Cabinet de conseil européen en stratégie et organisation, fondé en 2008 et basé à Neuilly-sur-Seine.</p>
+
+    <!-- Présentation de l'entreprise -->
+    <div class="entreprise-grid" style="margin-bottom:1.4rem">
+      <div class="card">
+        <div class="card-icon icon-cyan"><i class="fas fa-building"></i></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">À propos de Square Management</h3>
+        <p style="color:var(--text-dim);font-size:.9rem">Fondé en 2008 et basé à Neuilly-sur-Seine, Square Management accompagne les grandes entreprises dans leurs projets de transformation en s'appuyant sur ses 900 consultants en France, Belgique et Luxembourg.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-purple"><i class="fas fa-chart-line"></i></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Domaines d'Excellence</h3>
+        <p style="color:var(--text-dim);font-size:.9rem">Le cabinet structure son expertise autour de 10 domaines : Data, Digital & Marketing, Innovation, Organisation & Efficiency, People & Change, Regulatory & Compliance, Risk & Finance, Supply Chain, Sustainability et Payments.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-green"><i class="fas fa-users"></i></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Recrutement</h3>
+        <p style="color:var(--text-dim);font-size:.9rem">Avec 400 embauches prévues en 2023, Square Management recherche des talents juniors et seniors pour renforcer son positionnement en Europe.</p>
+      </div>
+    </div>
+
+    <!-- Mon rôle & mes missions -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:.5rem">
+      <div class="card">
+        <div class="card-icon icon-purple"><i class="fas fa-id-badge"></i></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Mon Rôle</h3>
+        <p style="color:var(--text-dim);font-size:.9rem">Technicien informatique en alternance. Gestion du parc informatique, support aux utilisateurs et contribution au bon fonctionnement de l'infrastructure.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-orange"><i class="fas fa-list-check"></i></div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Mes Missions</h3>
+        <ul style="color:var(--text-dim);font-size:.88rem;padding-left:1rem;list-style:disc;display:flex;flex-direction:column;gap:.3rem">
+          <li>Gestion, installation et maintenance du parc informatique</li>
+          <li>Support aux utilisateurs</li>
+          <li>Optimisation des processus de maintenance et d'attribution du matériel</li>
+          <li>Accompagnement quotidien des collaborateurs</li>
+          <li>Veille au bon fonctionnement de l'infrastructure informatique</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Certifications ── -->
+<section id="certifications">
+  <div class="container fade-up">
+    <div class="section-label">05 — Certifications</div>
+    <h2 class="section-title">Diplômes & Certifications</h2>
+    <div class="divider"></div>
+    <div class="certs-grid">
+      <div class="card cert-card">
+        <div class="card-icon icon-cyan"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Baccalauréat Général</h3>
+        <p>Spécialité NSI (Numérique et Sciences Informatiques) – Lycée Gaston Bachelard, Chelles – Session 2025</p>
+        <a href="bac_yaren_fabre.pdf" target="_blank" class="btn btn-outline" style="font-size:.8rem;padding:.45rem 1rem;width:fit-content;margin-top:auto">
+          <i class="fas fa-file-pdf"></i> Voir le diplôme
+        </a>
+      </div>
+      <div class="card cert-card">
+        <div class="card-icon icon-purple"><i class="fas fa-certificate"></i></div>
+        <h3>Certification PIX</h3>
+        <p>Score 360/896 – Lycée Gaston Bachelard – Délivrée le 10 février 2025</p>
+        <a href="pix_yaren_fabre.pdf" target="_blank" class="btn btn-outline" style="font-size:.8rem;padding:.45rem 1rem;width:fit-content;margin-top:auto">
+          <i class="fas fa-file-pdf"></i> Voir l'attestation
+        </a>
+      </div>
+      <div class="card cert-card">
+        <div class="card-icon icon-orange"><i class="fas fa-network-wired"></i></div>
+        <h3>Cisco Packet Tracer</h3>
+        <p>Formation en cours – Simulation de réseaux et configuration d'équipements Cisco.</p>
+        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:#ff9800;font-weight:600;margin-top:auto"><i class="fas fa-spinner fa-spin"></i> En cours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Projets ── -->
+<section id="projets" style="background: var(--bg2);">
+  <div class="container fade-up">
+    <div class="section-label">06 — Réalisations</div>
+    <h2 class="section-title">Projets</h2>
+    <div class="divider"></div>
+    <div class="projets-grid">
+
+      <!-- TP 1 : Administration Debian -->
+      <div class="card projet-card">
+        <div class="card-icon icon-cyan"><i class="fab fa-linux"></i></div>
+        <h3>Administration Debian – Projet Marvel</h3>
+        <p>Installation et configuration d'une VM Debian sous VMware. Configuration réseau manuelle, gestion des paquets APT, création d'utilisateurs et de groupes, mise en place d'une arborescence sécurisée avec permissions Unix (chmod, chown, SGID).</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.8rem">
+          <span class="tag">Linux</span>
+          <span class="tag">VMware</span>
+          <span class="tag">Debian</span>
+          <span class="tag tag-purple">1ère année</span>
+        </div>
+      </div>
+
+      <!-- TP 2 : GLPI -->
+      <div class="card projet-card">
+        <div class="card-icon icon-purple"><i class="fas fa-ticket"></i></div>
+        <h3>Mise en place de la pile LAMP et GLPI</h3>
+        <p>Installation d'un serveur web LAMP (Linux, Apache, MariaDB, PHP) sur Debian, puis déploiement et configuration de GLPI pour la gestion du parc informatique et des tickets de support.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.8rem">
+          <span class="tag">GLPI</span>
+          <span class="tag">LAMP</span>
+          <span class="tag">Debian</span>
+          <span class="tag">Apache</span>
+          <span class="tag tag-purple">1ère année</span>
+        </div>
+        <a href="TP_GLPI_Yaren_Fabre.pdf" target="_blank" class="btn btn-outline" style="font-size:.82rem;padding:.5rem 1rem;width:fit-content;margin-top:.8rem">
+          <i class="fas fa-file-pdf"></i> Voir le compte-rendu
+        </a>
+      </div>
+
+      <!-- Placeholder futur -->
+      <div class="card projet-card" style="border-style:dashed;opacity:.6">
+        <div class="card-icon icon-green"><i class="fas fa-plus"></i></div>
+        <h3>Projets à venir</h3>
+        <p>D'autres projets seront ajoutés au fur et à mesure de la formation (2ème année).</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.8rem">
+          <span class="tag tag-purple">2ème année</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Veille ── -->
+<section id="veille">
+  <div class="container fade-up">
+    <div class="section-label">07 — Veille</div>
+    <h2 class="section-title">Veille Technologique</h2>
+    <div class="divider"></div>
+    <div class="veille-placeholder">
+      <i class="fas fa-rss"></i>
+      <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Section en construction</h3>
+      <p style="font-size:.92rem">Cette section présentera ma veille technologique et juridique. Thème, sources, synthèse et impacts à compléter ultérieurement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Tableau de synthèse ── -->
+<section id="synthese" style="background: var(--bg2);">
+  <div class="container fade-up">
+    <div class="section-label">08 — Compétences</div>
+    <h2 class="section-title">Tableau de Synthèse</h2>
+    <div class="divider"></div>
+    <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:2.5rem;flex-wrap:wrap">
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:.5rem">
+          Synthèse des réalisations professionnelles
+        </h3>
+        <p style="color:var(--text-dim);font-size:.92rem;max-width:480px">
+          Tableau recensant l'ensemble des compétences mobilisées lors des réalisations en formation et en entreprise au cours des deux années de BTS SIO SISR.
+        </p>
+      </div>
+      <a href="tableau_synthese.pdf" target="_blank" class="btn btn-primary" style="flex-shrink:0;white-space:nowrap">
+        <i class="fas fa-table"></i> Voir le tableau
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<section id="contact">
+  <div class="container fade-up">
+    <div class="section-label">09 — Contact</div>
+    <h2 class="section-title">Me contacter</h2>
+    <div class="divider"></div>
+    <p class="section-desc">N'hésitez pas à me contacter pour toute question ou opportunité professionnelle.</p>
+    <div class="contact-grid">
+      <a href="mailto:yarenfabre@gmail.com" class="contact-item card" style="text-decoration:none">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <div class="label">Email</div>
+          <div class="value">yarenfabre@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/yaren-fabre" target="_blank" class="contact-item card" style="text-decoration:none">
+        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+        <div>
+          <div class="label">LinkedIn</div>
+          <div class="value">linkedin.com/in/yaren-fabre</div>
+        </div>
+      </a>
+      <!-- CV placeholder -->
+      <a href="documents/cv.pdf" class="contact-item card" style="text-decoration:none">
+        <div class="contact-icon"><i class="fas fa-file-user"></i></div>
+        <div>
+          <div class="label">Curriculum Vitae</div>
+          <div class="value">Télécharger mon CV</div>
+        </div>
+      </a>
+      <a href="https://www.h3hitema.fr" target="_blank" class="contact-item card" style="text-decoration:none">
+        <div class="contact-icon"><i class="fas fa-school"></i></div>
+        <div>
+          <div class="label">École</div>
+          <div class="value">H3 Hitema – Paris</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <p>&copy; 2025 Yaren Fabre — Portfolio BTS SIO SISR</p>
+</footer>
+
+<script>
+  // Hamburger menu
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Active nav link
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
