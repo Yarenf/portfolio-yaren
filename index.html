@@ -23,17 +23,17 @@
   <style>
     /* ── Variables ── */
     :root {
-      --bg:        #080c12;
-      --bg2:       #0e1420;
-      --bg3:       #141c2e;
-      --border:    rgba(255,255,255,0.07);
-      --accent:    #00d8ff;
+      --bg:        #f0f7ff;
+      --bg2:       #e6f0fb;
+      --bg3:       #dce8f7;
+      --border:    rgba(45,125,210,0.15);
+      --accent:    #2d7dd2;
       --accent2:   #7c5cfc;
-      --text:      #e2e8f0;
-      --text-dim:  #7a8ba0;
-      --card:      rgba(20, 28, 46, 0.85);
+      --text:      #1a3a5c;
+      --text-dim:  #5a7898;
+      --card:      rgba(255,255,255,0.95);
       --radius:    14px;
-      --glow:      0 0 28px rgba(0,216,255,0.18);
+      --glow:      0 4px 20px rgba(45,125,210,0.12);
     }
 
     /* ── Reset ── */
@@ -54,8 +54,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,216,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,216,255,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(45,125,210,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45,125,210,0.06) 1px, transparent 1px);
       background-size: 48px 48px;
       pointer-events: none;
       z-index: 0;
@@ -66,7 +66,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(8,12,18,0.85);
+      background: rgba(255,255,255,0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -74,6 +74,7 @@
       justify-content: space-between;
       padding: 0 3rem;
       height: 62px;
+      box-shadow: 0 1px 16px rgba(45,125,210,0.07);
     }
     .nav-logo {
       font-family: 'Syne', sans-serif;
@@ -138,8 +139,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(0,216,255,0.08);
-      border: 1px solid rgba(0,216,255,0.25);
+      background: rgba(45,125,210,0.08);
+      border: 1px solid rgba(45,125,210,0.25);
       color: var(--accent);
       font-size: 0.78rem;
       font-weight: 600;
@@ -164,7 +165,7 @@
       font-weight: 800;
       font-size: clamp(2.8rem, 6vw, 4.5rem);
       line-height: 1.05;
-      background: linear-gradient(135deg, #fff 40%, var(--accent));
+      background: linear-gradient(135deg, #1a3a5c 40%, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -196,12 +197,12 @@
     }
     .btn-primary {
       background: var(--accent);
-      color: #06090f;
+      color: var(--text);
     }
-    .btn-primary:hover { filter: brightness(1.15); transform: translateY(-1px); }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
     .btn-outline {
-      background: transparent;
-      border: 1px solid var(--border);
+      background: #fff;
+      border: 1.5px solid var(--border);
       color: var(--text);
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
@@ -248,7 +249,7 @@
       font-family: 'Syne', sans-serif;
       font-weight: 800;
       font-size: clamp(1.7rem, 3vw, 2.4rem);
-      color: #fff;
+      color: var(--text);
       margin-bottom: 1rem;
     }
     .section-desc {
@@ -271,10 +272,9 @@
       border-radius: var(--radius);
       padding: 1.8rem;
       transition: border-color 0.25s, box-shadow 0.25s;
-      backdrop-filter: blur(8px);
     }
     .card:hover {
-      border-color: rgba(0,216,255,0.3);
+      border-color: rgba(45,125,210,0.35);
       box-shadow: var(--glow);
     }
     .card-icon {
@@ -286,10 +286,10 @@
       font-size: 1.1rem;
       margin-bottom: 1rem;
     }
-    .icon-cyan  { background: rgba(0,216,255,0.12); color: var(--accent); }
-    .icon-purple{ background: rgba(124,92,252,0.12); color: var(--accent2); }
-    .icon-green { background: rgba(0,230,118,0.12);  color: #00e676; }
-    .icon-orange{ background: rgba(255,152,0,0.12);  color: #ff9800; }
+    .icon-cyan  { background: rgba(45,125,210,0.1); color: var(--accent); }
+    .icon-purple{ background: rgba(124,92,252,0.1); color: var(--accent2); }
+    .icon-green { background: rgba(0,180,90,0.1);   color: #00a855; }
+    .icon-orange{ background: rgba(245,130,0,0.1);  color: #e07800; }
 
     /* ── About ── */
     .about-grid {
@@ -347,7 +347,7 @@
       width: 10px; height: 10px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0,216,255,0.18);
+      box-shadow: 0 0 0 3px rgba(45,125,210,0.15);
       transform: translateX(-4px);
     }
     .tl-year {
@@ -361,7 +361,7 @@
     .tl-title {
       font-weight: 600;
       font-size: 1rem;
-      color: #fff;
+      color: var(--text);
       margin-bottom: 0.2rem;
     }
     .tl-sub {
@@ -387,7 +387,7 @@
       flex-direction: column;
       gap: 0.8rem;
     }
-    .cert-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #fff; }
+    .cert-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); }
     .cert-card p  { font-size: 0.88rem; color: var(--text-dim); }
 
     /* ── Projets placeholder ── */
@@ -402,12 +402,12 @@
       gap: 0.8rem;
       min-height: 180px;
     }
-    .projet-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; color: #fff; }
+    .projet-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--text); }
     .projet-card p  { color: var(--text-dim); font-size: 0.9rem; flex: 1; }
     .tag {
       display: inline-block;
-      background: rgba(0,216,255,0.1);
-      border: 1px solid rgba(0,216,255,0.2);
+      background: rgba(45,125,210,0.1);
+      border: 1px solid rgba(45,125,210,0.2);
       color: var(--accent);
       font-size: 0.72rem;
       font-weight: 600;
@@ -424,8 +424,8 @@
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      background: rgba(255,152,0,0.07);
-      border: 1px solid rgba(255,152,0,0.2);
+      background: rgba(224,120,0,0.07);
+      border: 1px solid rgba(224,120,0,0.2);
       border-radius: 10px;
       padding: 0.9rem 1.2rem;
       color: #ff9800;
@@ -437,7 +437,7 @@
     .veille-placeholder {
       text-align: center;
       padding: 4rem 2rem;
-      border: 2px dashed var(--border);
+      border: 2px dashed rgba(45,125,210,0.2);
       border-radius: var(--radius);
       color: var(--text-dim);
     }
@@ -455,7 +455,7 @@
       font-family: 'Syne', sans-serif;
       font-weight: 700;
       font-size: 1.2rem;
-      color: #fff;
+      color: var(--text);
       margin-bottom: 0.5rem;
     }
     .synthese-card .left p { color: var(--text-dim); font-size: 0.92rem; max-width: 400px; }
@@ -568,7 +568,7 @@
     <div class="divider"></div>
     <div class="card">
       <p class="about-main">
-        Je m'appelle <strong style="color:#fff">Yaren Fabre</strong>, j'ai <strong style="color:#fff">19 ans</strong> et je prépare actuellement un <strong style="color:#fff">BTS SIO option SISR</strong> (Solutions d'Infrastructure, Systèmes et Réseaux) à H3 Hitema, en alternance chez Square Management. Depuis le lycée, où j'ai choisi la spécialité NSI, j'ai toujours été attiré par le fonctionnement des systèmes et des réseaux informatiques. Cette formation en alternance me permet de mettre directement en pratique les compétences acquises en cours, notamment dans la gestion du parc informatique et le support aux utilisateurs.
+        Je m'appelle <strong style="color:var(--text)">Yaren Fabre</strong>, j'ai <strong style="color:var(--text)">19 ans</strong> et je prépare actuellement un <strong style="color:var(--text)">BTS SIO option SISR</strong> (Solutions d'Infrastructure, Systèmes et Réseaux) à H3 Hitema, en alternance chez Square Management. Depuis le lycée, où j'ai choisi la spécialité NSI, j'ai toujours été attiré par le fonctionnement des systèmes et des réseaux informatiques. Cette formation en alternance me permet de mettre directement en pratique les compétences acquises en cours, notamment dans la gestion du parc informatique et le support aux utilisateurs.
       </p>
       <div class="pills-row">
         <span class="info-pill"><i class="fas fa-map-marker-alt"></i> Paris, France</span>
@@ -594,19 +594,19 @@
 
     <!-- Intro -->
     <div class="card" style="margin-bottom:1.4rem;font-size:.97rem;line-height:1.8;color:var(--text)">
-      Le BTS SIO se divise en deux spécialités complémentaires : <strong style="color:#fff">SISR</strong>, orientée réseaux et infrastructure, et <strong style="color:var(--accent2)">SLAM</strong>, orientée développement logiciel. Ces deux parcours partagent une base commune avant de se spécialiser selon les débouchés visés.
+      Le BTS SIO se divise en deux spécialités complémentaires : <strong style="color:var(--text)">SISR</strong>, orientée réseaux et infrastructure, et <strong style="color:var(--accent2)">SLAM</strong>, orientée développement logiciel. Ces deux parcours partagent une base commune avant de se spécialiser selon les débouchés visés.
     </div>
 
     <!-- Deux options -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.4rem">
 
       <!-- SISR (mon option) -->
-      <div class="card" style="border-color:rgba(0,216,255,0.4)">
-        <div style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(0,216,255,0.1);border:1px solid rgba(0,216,255,0.3);color:var(--accent);font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:100px;margin-bottom:.8rem">
+      <div class="card" style="border-color:rgba(45,125,210,0.4)">
+        <div style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(45,125,210,0.1);border:1px solid rgba(0,216,255,0.3);color:var(--accent);font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:100px;margin-bottom:.8rem">
           ✓ Mon option
         </div>
         <div class="card-icon icon-cyan"><i class="fas fa-network-wired"></i></div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.2rem">SISR</h3>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);font-size:1.05rem;margin-bottom:.2rem">SISR</h3>
         <p style="color:var(--text-dim);font-size:.82rem;margin-bottom:.8rem">Solutions d'Infrastructure, Systèmes et Réseaux</p>
         <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.35rem">
           <li style="font-size:.85rem;color:var(--text-dim);display:flex;align-items:flex-start;gap:.5rem"><span style="color:var(--accent);flex-shrink:0">▸</span>Sécurisation des systèmes et des réseaux</li>
@@ -623,7 +623,7 @@
           Autre option
         </div>
         <div class="card-icon icon-purple"><i class="fas fa-code"></i></div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.2rem">SLAM</h3>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);font-size:1.05rem;margin-bottom:.2rem">SLAM</h3>
         <p style="color:var(--text-dim);font-size:.82rem;margin-bottom:.8rem">Solutions Logicielles et Applications Métiers</p>
         <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.35rem">
           <li style="font-size:.85rem;color:var(--text-dim);display:flex;align-items:flex-start;gap:.5rem"><span style="color:var(--accent2);flex-shrink:0">▸</span>Développement d'applications web et mobiles</li>
@@ -640,19 +640,19 @@
       <div class="card" style="text-align:center;padding:1.4rem">
         <div style="font-size:1.6rem;margin-bottom:.5rem">⏱️</div>
         <div style="font-size:.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem">Durée</div>
-        <div style="font-size:1.1rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif">2 ans</div>
+        <div style="font-size:1.1rem;font-weight:700;color:var(--text);font-family:'Syne',sans-serif">2 ans</div>
         <div style="font-size:.78rem;color:var(--text-dim);margin-top:.15rem">1 350h de cours</div>
       </div>
       <div class="card" style="text-align:center;padding:1.4rem">
         <div style="font-size:1.6rem;margin-bottom:.5rem">🔄</div>
         <div style="font-size:.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem">Rythme alternance</div>
-        <div style="font-size:1.1rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif">3j / 2j</div>
+        <div style="font-size:1.1rem;font-weight:700;color:var(--text);font-family:'Syne',sans-serif">3j / 2j</div>
         <div style="font-size:.78rem;color:var(--text-dim);margin-top:.15rem">Entreprise / Formation</div>
       </div>
       <div class="card" style="text-align:center;padding:1.4rem">
         <div style="font-size:1.6rem;margin-bottom:.5rem">🎓</div>
         <div style="font-size:.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem">Diplôme</div>
-        <div style="font-size:1.1rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif">Niveau 5</div>
+        <div style="font-size:1.1rem;font-weight:700;color:var(--text);font-family:'Syne',sans-serif">Niveau 5</div>
         <div style="font-size:.78rem;color:var(--text-dim);margin-top:.15rem">Diplôme d'État · Bac+2</div>
       </div>
     </div>
@@ -669,7 +669,7 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
 
       <div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem"><i class="fas fa-graduation-cap" style="color:var(--accent)"></i> Cursus Scolaire</h3>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem"><i class="fas fa-graduation-cap" style="color:var(--accent)"></i> Cursus Scolaire</h3>
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-dot"></div>
@@ -693,15 +693,15 @@
       </div>
 
       <div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem"><i class="fas fa-briefcase" style="color:var(--accent)"></i> Projet Professionnel</h3>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem"><i class="fas fa-briefcase" style="color:var(--accent)"></i> Projet Professionnel</h3>
         <div class="card" style="margin-bottom:1.2rem">
           <div class="card-icon icon-cyan"><i class="fas fa-rocket"></i></div>
-          <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Objectif</h3>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:.5rem">Objectif</h3>
           <p style="color:var(--text-dim);font-size:.9rem">Approfondir mes compétences en administration systèmes et réseaux tout au long de mon BTS. À l'issue de la formation, j'envisage soit de poursuivre en Bachelor ou Licence Pro spécialisée en administration réseaux et cybersécurité, soit d'intégrer directement le marché du travail en tant que technicien réseau ou administrateur systèmes. Les deux pistes m'intéressent et je construis mon parcours pour être prêt dans les deux cas.</p>
         </div>
         <div class="card">
           <div class="card-icon icon-purple"><i class="fas fa-laptop-code"></i></div>
-          <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Compétences techniques</h3>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:.5rem">Compétences techniques</h3>
           <p style="color:var(--text-dim);font-size:.9rem;margin-bottom:.8rem">Technologies et outils étudiés en formation et en entreprise.</p>
           <div style="display:flex;flex-wrap:wrap;gap:.4rem">
             <span class="tag">Linux</span>
@@ -730,17 +730,17 @@
     <div class="entreprise-grid" style="margin-bottom:1.4rem">
       <div class="card">
         <div class="card-icon icon-cyan"><i class="fas fa-building"></i></div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">À propos de Square Management</h3>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:.5rem">À propos de Square Management</h3>
         <p style="color:var(--text-dim);font-size:.9rem">Fondé en 2008 et basé à Neuilly-sur-Seine, Square Management accompagne les grandes entreprises dans leurs projets de transformation en s'appuyant sur ses 685 consultants en France, Belgique et Luxembourg.</p>
       </div>
       <div class="card">
         <div class="card-icon icon-purple"><i class="fas fa-chart-line"></i></div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Domaines d'Excellence</h3>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:.5rem">Domaines d'Excellence</h3>
         <p style="color:var(--text-dim);font-size:.9rem">Le cabinet structure son expertise autour de 10 domaines : Data, Digital & Marketing, Innovation, Organisation & Efficiency, People & Change, Regulatory & Compliance, Risk & Finance, Supply Chain, Sustainability et Payments.</p>
       </div>
       <div class="card">
         <div class="card-icon icon-green"><i class="fas fa-users"></i></div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Recrutement</h3>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:.5rem">Recrutement</h3>
         <p style="color:var(--text-dim);font-size:.9rem">Square Management recrute régulièrement des talents juniors et seniors pour renforcer son positionnement en Europe et accompagner sa croissance dans ses différents domaines d'expertise.</p>
       </div>
     </div>
@@ -749,12 +749,12 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:.5rem">
       <div class="card">
         <div class="card-icon icon-purple"><i class="fas fa-id-badge"></i></div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Mon Rôle</h3>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:.5rem">Mon Rôle</h3>
         <p style="color:var(--text-dim);font-size:.9rem">Technicien informatique en alternance. Gestion du parc informatique, support aux utilisateurs et contribution au bon fonctionnement de l'infrastructure.</p>
       </div>
       <div class="card">
         <div class="card-icon icon-orange"><i class="fas fa-list-check"></i></div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Mes Missions</h3>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:.5rem">Mes Missions</h3>
         <ul style="color:var(--text-dim);font-size:.88rem;padding-left:1rem;list-style:disc;display:flex;flex-direction:column;gap:.3rem">
           <li>Gestion, installation et maintenance du parc informatique</li>
           <li>Support aux utilisateurs</li>
@@ -794,7 +794,7 @@
         <div class="card-icon icon-orange"><i class="fas fa-network-wired"></i></div>
         <h3>Cisco Networking Academy</h3>
         <p>Notions de base sur les réseaux (Networking Basics) – Parcours Technicien réseau – Niveau Beginner – Cours en autonomie (self-paced).</p>
-        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:#ff9800;font-weight:600;margin-top:auto"><i class="fas fa-spinner fa-spin"></i> En cours</span>
+        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:#e07800;font-weight:600;margin-top:auto"><i class="fas fa-spinner fa-spin"></i> En cours</span>
       </div>
     </div>
   </div>
@@ -877,7 +877,7 @@
     <div class="divider"></div>
     <div class="veille-placeholder">
       <i class="fas fa-rss"></i>
-      <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;margin-bottom:.5rem">Section en construction</h3>
+      <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--text);margin-bottom:.5rem">Section en construction</h3>
       <p style="font-size:.92rem">Cette section présentera ma veille technologique et juridique. Thème, sources, synthèse et impacts à compléter ultérieurement.</p>
     </div>
   </div>
@@ -891,7 +891,7 @@
     <div class="divider"></div>
     <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:2.5rem;flex-wrap:wrap">
       <div>
-        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:.5rem">
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:var(--text);margin-bottom:.5rem">
           Synthèse des réalisations professionnelles
         </h3>
         <p style="color:var(--text-dim);font-size:.92rem;max-width:480px">
