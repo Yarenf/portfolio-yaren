@@ -89,11 +89,15 @@
 
 <main>
   <div class="section-label">Cisco Networking Academy</div>
-  <h1 class="page-title">Formations en cours</h1>
+  <h1 class="page-title">Mes formations</h1>
   <div class="divider"></div>
   <p class="page-desc">Formations suivies en autonomie (self-paced) dans le cadre des parcours <strong>Technicien réseau</strong> et <strong>IT Support Specialist</strong> – Niveau Beginner.</p>
 
-  <div class="courses-grid">
+  <!-- EN COURS -->
+  <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text);margin-bottom:1rem">
+    <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:#e07800;font-weight:600;background:rgba(224,120,0,0.08);border:1px solid rgba(224,120,0,0.2);padding:.25rem .7rem;border-radius:100px"><i class="fas fa-spinner fa-spin"></i> En cours</span>
+  </h2>
+  <div class="courses-grid" style="margin-bottom:2.5rem">
 
     <div class="course-card">
       <div class="course-icon" style="background:rgba(224,120,0,0.1);color:#e07800"><i class="fas fa-headset"></i></div>
@@ -135,11 +139,19 @@
       <span class="badge-inprogress"><i class="fas fa-spinner fa-spin"></i> En cours</span>
     </div>
 
+  </div>
+
+  <!-- TERMINÉES -->
+  <h2 id="terminees" style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text);margin-bottom:1rem">
+    <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:#00a855;font-weight:600;background:rgba(0,168,85,0.08);border:1px solid rgba(0,168,85,0.2);padding:.25rem .7rem;border-radius:100px"><i class="fas fa-check"></i> Terminées</span>
+  </h2>
+  <div class="courses-grid">
+
     <div class="course-card" style="border-color:rgba(0,160,85,0.25)">
       <div class="course-icon" style="background:rgba(0,160,85,0.1);color:#00a855"><i class="fas fa-shield-alt"></i></div>
       <div class="course-title">Introduction à la cybersécurité</div>
       <div class="course-sub">Découverte des bases de la cybersécurité, des menaces informatiques et des bonnes pratiques de protection.</div>
-      <div class="course-path" style="color:#00a855"><i class="fas fa-check-circle" style="margin-right:.3rem"></i>Terminé – 08 juin 2026</div>
+      <div class="course-path" style="color:#00a855"><i class="fas fa-check-circle" style="margin-right:.3rem"></i>Cisco Networking Academy – 08 juin 2026</div>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:auto">
         <span class="badge-done"><i class="fas fa-check"></i> Certifié</span>
         <a href="cisco_cybersecurite.pdf" target="_blank" class="btn btn-outline" style="font-size:.78rem;padding:.3rem .9rem">
