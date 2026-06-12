@@ -937,7 +937,14 @@
           Tableau recensant l'ensemble des compétences mobilisées lors des réalisations en formation et en entreprise au cours des deux années de BTS SIO SISR.
         </p>
       </div>
-      <a href="tableau_synthese.pdf" target="_blank" class="btn btn-primary" style="flex-shrink:0;white-space:nowrap">
+      <a href="tableau_synthese.pdf" target="_blank" class="btn btn-primary" style="flex-shrink:0;white-space:nowrap" onclick="
+        const a = document.createElement('a');
+        a.href = 'tableau_synthese.pdf';
+        a.download = 'tableau_synthese.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      ">
         <i class="fas fa-table"></i> Voir le tableau
       </a>
     </div>
